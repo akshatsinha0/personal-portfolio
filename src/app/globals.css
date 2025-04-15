@@ -1,9 +1,44 @@
 @import "tailwindcss";
 
+@tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 13, 17, 23;
+  --background-end-rgb: 0, 0, 0;
 }
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+}
+
+/* Grid background pattern */
+.bg-grid-white\/5 {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Font classes */
+.fira-sans-regular {
+  font-family: var(--font-fira-sans), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Add all other Fira Sans classes here */
+
+.marvel-regular {
+  font-family: var(--font-marvel), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 @theme inline {
   --color-background: var(--background);
@@ -19,8 +54,84 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.pattern-overlay {
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255,255,255,0.03) 100px, rgba(255,255,255,0.03) 200px),
+    repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255,255,255,0.03) 100px, rgba(255,255,255,0.03) 200px);
+  background-size: 200px 200px;
+  background-position: center;
+}
+
+/* For glassmorphism in menu */
+.glassmorphism {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* src/app/globals.css */
+@keyframes marquee {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(100%) }
+}
+
+.animate-marquee-slow {
+  animation: marquee 120s linear infinite;
+}
+
+.animate-marquee-medium {
+  animation: marquee 90s linear infinite;
+}
+
+.animate-marquee-fast {
+  animation: marquee 60s linear infinite;
+}
+
+/* Density scaling */
+@media (max-width: 768px) {
+  .animate-marquee-slow { animation-duration: 180s }
+  .animate-marquee-medium { animation-duration: 135s }
+  .animate-marquee-fast { animation-duration: 90s }
+}
+
+/* Diagonal pattern reinforcement */
+.watermark-pattern {
+  background-image: 
+    repeating-linear-gradient(
+      15deg,
+      transparent,
+      transparent calc(15vw - 5px),
+      rgba(255,255,255,0.05) calc(15vw - 5px),
+      rgba(255,255,255,0.05) 15vw
+    );
+}
+
+@keyframes marquee {
+  0% { transform: translateX(-50%) translateY(0) }
+  100% { transform: translateX(50%) translateY(0) }
+}
+
+/* Much faster animation speeds */
+.animate-marquee-fast {
+  animation: marquee 60s linear infinite;
+}
+
+.animate-marquee-faster {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-fastest {
+  animation: marquee 30s linear infinite;
+}
+
+/* Better opacity classes */
+.opacity-30 {
+  opacity: 0.3;
+}
+
+.opacity-35 {
+  opacity: 0.35;
+}
+
+.opacity-40 {
+  opacity: 0.4;
 }

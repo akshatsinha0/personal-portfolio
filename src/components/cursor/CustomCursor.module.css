@@ -1,0 +1,121 @@
+.cursorContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    z-index: 9999;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease;
+  }
+  
+  .cursor {
+    position: absolute;
+    display: flex;
+    transition: opacity 0.3s ease;
+  }
+  
+  .arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+  }
+  
+  .userImage {
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 25px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0.9;
+    /* Add this line for smooth transitions */
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  }
+  
+  .profileImage {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .exploreCursor {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transform: translate(-25px, -25px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .exploreCircle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #0057ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: lowercase;
+    box-shadow: 0 0 15px rgba(0, 87, 255, 0.5);
+    transition: transform 0.3s ease;
+  }
+  
+  .exploreCursor:hover .exploreCircle {
+    transform: scale(1.1);
+  }
+  
+  .hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Hide default cursor when custom cursor is active */
+  :global(body.custom-cursor) {
+    cursor: none !important;
+  }
+  
+  :global(body.custom-cursor *) {
+    cursor: none !important;
+  }
+
+  .exploreCursor {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(0,87,255,1) 50%, rgba(14,0,255,0.8) 70%, rgba(41,98,255,0) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+      0 0 20px rgba(0,87,255,0.6),
+      0 0 40px rgba(0,87,255,0.3),
+      inset 0 0 15px rgba(255,255,255,0.5);
+    backdrop-filter: blur(3px);
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .exploreCursor::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,87,255,0.5);
+    transform: scale(0);
+    animation: pulse 2s infinite;
+  }
+  
